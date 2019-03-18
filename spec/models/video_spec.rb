@@ -20,5 +20,11 @@ RSpec.describe Video, type: :model do
       video.increment_views!
       expect(video.total_views).to eq 1
     end
+
+    it 'create a new view to video' do
+      expect(video.views.count).to eq 0
+      video.increment_views!
+      expect(video.views.count).to eq 1
+    end
   end
 end

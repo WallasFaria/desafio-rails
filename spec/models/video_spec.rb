@@ -9,6 +9,26 @@ RSpec.describe Video, type: :model do
 
     it { expect(subject).to respond_to(:total_views) }
     it { expect(subject).to_not respond_to(:total_views=) }
+
+    describe 'url' do
+      context 'valids' do
+        it 'should has http(s) and with m3u8 extension' do
+          should allow_value('https://urldovideo.com/video.m3u8').for(:url)
+          should allow_value('http://urldovideo.com/video.m3u8').for(:url)
+        end
+      end
+
+      context 'invalids' do
+        it 'should not allow without http(s)' do
+          should_not allow_value('urldovideo.com/video.m3u8').for(:url)
+        end
+
+        it 'should not allow without m3u8 extension' do
+          should_not allow_value('http://urldovideo.com/video').for(:url)
+          should_not allow_value('http://urldovideo.com/video.m3u81s').for(:url)
+        end
+      end
+    end
   end
 
   describe '#increment_views' do

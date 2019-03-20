@@ -1,0 +1,35 @@
+:root {
+  --color-turquoise: #0099A4;
+  --color-red: #FF6565;
+  --color-dark: #4D4F5C;
+  --color-gray: #8B8B8B;
+  --color-mid-gray: #CFCFCF;
+  --color-light-gray: #F1F1F1;
+  --color-white: #FFFFFF;
+
+  --color-default: var(--color-dark);
+  --color-primary: var(--color-turquoise);
+  --color-secundary: var(--color-red);
+  --color-border: var(--color-mid-gray);
+
+  --blue: var(--color-primary);
+
+  --font-size: 16px;
+  --font-small-size: calc(var(--font-size) * 0.85);
+  --font-extra-small-size: calc(var(--font-size) * 0.7);
+  --font-mid-size: calc(var(--font-size) * 1.25);
+  --font-title-size: calc(var(--font-size) * 1.5);
+  --font-super-title-size: calc(var(--font-size) * 5);
+
+  --font-weight: 400;
+  --font-mid-weight: 500;
+  --font-title-weight: 500;
+  --font-super-title-weight: 700;
+
+  --font-height: 1.5;
+  --font-mid-height: 1.4;
+  --font-title-height: 1.25;
+  --font-super-title-height: 1.1;
+
+  --transition: .25 all ease-in-out;
+}

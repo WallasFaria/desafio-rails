@@ -1,0 +1,32 @@
+@import "variables";
+
+.btn-primary {
+  background-color: $color-turquoise;
+  border-color: $color-turquoise;
+
+  &:hover {
+    background-color: darken($color-turquoise, 10%);
+    border-color: darken($color-turquoise, 10%);
+  }
+}
+
+.btn-light {
+  background-color: transparent;
+  border-color: transparent;
+  border-width: 2px;
+  padding: 0.33rem 0.6rem;
+
+  &:hover {
+    background-color: transparent;
+    border-color: $color-turquoise;
+    color: darken($color-turquoise, 15%);
+  }
+}
+
+a, .btn-link {
+  color: $color-turquoise;
+
+  &:hover {
+    color: darken($color-turquoise, 10%);
+  }
+}

@@ -1,0 +1,25 @@
+.navbar.navbar-light.shadow-sm
+  .container.d-flex.justify-content-between
+    a.navbar-brand.d-flex.align-items-center href="#{root_path}"
+      | AnyVideo
+
+    - if user_signed_in?
+      .dropdown
+        button.btn.btn-link[id="dropdownMenuButton"
+                            aria-haspopup="true"
+                            data-toggle="dropdown"
+                            aria-expanded="false"]
+
+          = fa_icon 'user-circle-o', text: current_user.first_name, right: true
+
+        .dropdown-menu aria-labelledby="dropdownMenuButton"
+          = link_to(fa_icon('video-camera', text: 'Meus Vídeos'),
+                    root_path, class: 'dropdown-item')
+
+          = link_to(fa_icon('sign-out', text: 'Sair'),
+                    destroy_user_session_path,
+                    method: :delete, class: 'dropdown-item')
+
+    - else
+      = link_to(fa_icon('user-circle-o', text: 'Entrar', right: true),
+                new_user_session_path)

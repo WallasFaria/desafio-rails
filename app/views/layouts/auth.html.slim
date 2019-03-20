@@ -10,11 +10,14 @@ html lang="pt-BR"
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
-  body.bg-light
+  body.bg-light.authentication
     header
       == render 'layouts/navbar'
 
     main role="main"
+      .container
+        = show_alert notice, type: 'success'
+        = show_alert alert, type: 'warning'
       #authentication.container
         == yield
 

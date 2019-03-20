@@ -1,8 +1,36 @@
-#authentication {
-  max-width: 500px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  padding: 30px;
+.authentication {
+  .alert {
+    margin-top: 15px;
+  }
+
+  #authentication {
+    max-width: 500px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    padding: 30px;
+  }
+
+  #error_explanation {
+    background: #ffebeb;
+    border: 1px solid var(--color-red);
+    margin-bottom: 15px;
+    border-radius: 2px;
+
+    h2 {
+      font-size: 16px;
+      padding: 7px 10px;
+      background: var(--color-red);
+      color: var(--color-white);
+    }
+
+    ul {
+      font-size: 12px;
+      padding-left: 26px;
+      color: #c34d4d;
+      margin-bottom: 7px;
+      font-weight: bold;
+    }
+  }
 }

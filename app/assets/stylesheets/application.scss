@@ -61,3 +61,15 @@ footer {
     border-color: darken($color-red, 10%);
   }
 }
+
+.btn-upload {
+  padding: 3px 12px 3px 15px;
+  display: flex;
+  align-items: center;
+
+  .fa {
+    font-size: 28px;
+    margin-left: 10px;
+    color: rgba(255,255,255,.6);
+  }
+}

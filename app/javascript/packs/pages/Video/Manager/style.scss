@@ -1,0 +1,21 @@
+.page-my-videos {
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 40px;
+    margin-bottom: 20px;
+
+    .title {
+      text-align: center;
+      font-size: var(--font-title-size);
+      margin: 0;
+    }
+
+    .btn-upload {
+      position: absolute;
+      right: 0;
+    }
+  }
+}

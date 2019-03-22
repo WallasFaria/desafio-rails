@@ -1,3 +1,5 @@
+@import "variables";
+
 @import "bootstrap";
 
 @import "root";
@@ -8,6 +10,8 @@
 
 @import "auth";
 
+@import "fontface/style.css";
+
 body {
   display: flex;
   flex-direction: column;
@@ -15,12 +19,17 @@ body {
   color: var(--color-default);
   font-size: var(--font-size);
   font-weight: var(--font-weight);
+  font-family: 'Segoe UI Regular';
+  background-color: #f1f1f2;
 }
 
 header {
   background-color: var(--color-white);
 }
 
+.title {
+  font-family: 'Segoe UI Semibold'
+}
 
 @media (min-width: 1200px) {
   .container {
@@ -32,11 +41,23 @@ footer {
   margin-top: auto;
   color: var(--color-gray);
   font-size: var(--font-small-size);
-  background-color: var(--color-light-gray);
+  background-color: #E2E2E5;
   border-top: 1px solid var(--color-border);
 
   .container {
     text-align: center;
     padding: 15px;
+  }
+}
+
+.btn-action {
+  background-color: $color-red;
+  border-color: $color-red;
+  color: $color-white;
+
+  &:hover, &:active, &:focus {
+    color: $color-white;
+    background-color: darken($color-red, 10%);
+    border-color: darken($color-red, 10%);
   }
 }

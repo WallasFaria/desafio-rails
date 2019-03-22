@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :home, only: [:index]
 
   root to: "home#index"
+
+  match '*path', to: 'home#index', via: :all
 end

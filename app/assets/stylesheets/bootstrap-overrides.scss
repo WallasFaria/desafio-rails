@@ -4,7 +4,7 @@
   background-color: $color-turquoise;
   border-color: $color-turquoise;
 
-  &:hover {
+  &:hover, &:active, &:focus {
     background-color: darken($color-turquoise, 10%);
     border-color: darken($color-turquoise, 10%);
   }

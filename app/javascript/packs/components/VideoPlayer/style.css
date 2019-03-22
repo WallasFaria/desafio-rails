@@ -1,0 +1,54 @@
+.video-js {
+  color: rgba(255, 255, 255, 0.37);
+}
+.video-js .vjs-control-bar {
+  width: 97%;
+  bottom: 8px;
+  left: 1.5%;
+  border-radius: 5px;
+  right: 1.5%;
+  height: 4.2em;
+  padding: 0.5em;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #2B333F;
+  background-color: rgba(29, 31, 33, 0.8);
+}
+.video-js .vjs-slider {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.video-js .vjs-load-progress {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.video-js .vjs-play-progress {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.video-js .vjs-play-progress:before {
+  color: #9E9E9E;
+}
+.video-js .vjs-load-progress div {
+  background-color: rgba(115, 133, 159, 0.28);
+}
+.video-js .vjs-big-play-button {
+  top: 50%;
+  left: 50%;
+  margin-top: -0.75em;
+  margin-left: -1.5em;
+}
+
+body, html {
+  padding: 0;
+  margin: 0;
+}
+.bg {
+  background: #2B333F;
+}
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
+.vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+  border-radius: 5px;
+}
+.vjs-icon-hd:before {
+  content: "\f110";
+}

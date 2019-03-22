@@ -14,7 +14,7 @@
 
         .dropdown-menu aria-labelledby="dropdownMenuButton"
           = link_to(fa_icon('video-camera', text: 'Meus Vídeos'),
-                    root_path, class: 'dropdown-item')
+                    '/my-videos', class: 'dropdown-item', 'data-turbolinks': 'false')
 
           = link_to(fa_icon('sign-out', text: 'Sair'),
                     destroy_user_session_path,

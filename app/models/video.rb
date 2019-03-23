@@ -6,6 +6,8 @@ class Video < ApplicationRecord
   validates :url, presence: true, url: { allow_blank: true },
                   format: { with: /\.m3u8$/i, multiline: true }
 
+  self.per_page = 10
+
   def increment_views!
     increment! :total_views
     views.create

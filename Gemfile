@@ -45,3 +45,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem "validate_url"
 gem "olive_branch"
+gem 'will_paginate', '~> 3.1.0'

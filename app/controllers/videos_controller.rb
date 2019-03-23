@@ -3,7 +3,7 @@ class VideosController < ApplicationController
   before_action :authenticate_user!, exception: [:show]
 
   def index
-    @videos = Video.all
+    @videos = Video.paginate(page: params[:page])
   end
 
   def show

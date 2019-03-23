@@ -9,9 +9,11 @@ const apiVideos = {
     }
   },
 
-  async getList() {
+  async getList({page}) {
+    const params = {page}
+
     try {
-      return (await axios.get('/videos')).data
+      return (await axios.get('/videos', { params })).data
     } catch (error) {
       return Promise.reject(error)
     }

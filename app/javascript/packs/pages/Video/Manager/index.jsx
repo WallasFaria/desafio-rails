@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
+import Pagination from 'react-js-pagination'
 
 import ToolBar from './components/ToolBar'
 import ListItem from './components/ListItem'
-import Pagination from '../../../components/Pagination'
 import Button from '../../../components/Button'
 
 import { apiVideos } from '../../../services/api'
@@ -11,15 +11,29 @@ import './style.scss'
 
 class VideoManager extends Component {
   state = {
-    videos: []
+    videos: [],
+    pagination: {
+      activePage: 0,
+      itemsCountPerPage: 0,
+      totalItemsCount: 0,
+      pageRangeDisplayed: 5
+    }
   }
 
   componentDidMount() {
     this.getVideoList()
   }
 
-  async getVideoList() {
-    apiVideos.getList().then(videos => this.setState({ videos }))
+  getVideoList(pageNumber = 1) {
+    const params = { page: pageNumber }
+
+    apiVideos.getList(params)
+      .then(({data, pagination}) =>
+        this.setState({ videos: data, pagination }))
+  }
+
+  handlePageChange = pageNumber => {
+    this.getVideoList(pageNumber)
   }
 
   hendleEdit = video => {
@@ -55,7 +69,14 @@ class VideoManager extends Component {
               onEdit={this.hendleEdit} />)}
         </div>
 
-        <Pagination />
+        <nav className='nav-navigation'>
+          <Pagination
+            {...this.state.pagination}
+            onChange={this.handlePageChange}
+            itemClass='page-item'
+            linkClass='page-link'
+          />
+        </nav>
       </div>
     )
   }

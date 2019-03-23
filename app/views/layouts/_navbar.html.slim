@@ -1,7 +1,8 @@
 .navbar.navbar-light.shadow-sm
   .container.d-flex.justify-content-between
-    a.navbar-brand.d-flex.align-items-center data-turbolinks="false" href="#{root_path}"
-      | AnyVideo
+    a.navbar-brand.d-flex.align-items-center.logo data-turbolinks="false" href="#{root_path}"
+      em Any
+      | Videos
 
     - if user_signed_in?
       .dropdown

@@ -13,7 +13,7 @@ require('./style.css')
 
 class VideoPlayer extends Component {
 
-  settingVideo(video) {
+  settingVideo = (video) => {
     if (video) {
       const player = videojs(video)
       player.hlsQualitySelector()
@@ -22,6 +22,7 @@ class VideoPlayer extends Component {
 
   render() {
     const { source, type, ...dimentions } = this.props
+    if (!source) return null
 
     return (
       <video ref={this.settingVideo} className="video-js vjs-default-skin" {...dimentions} controls>

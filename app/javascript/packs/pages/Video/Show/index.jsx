@@ -2,22 +2,40 @@ import React, { Component } from 'react'
 
 import VideoPlayer from '../../../components/VideoPlayer'
 import LinkButton from '../../../components/Button'
+import { apiVideos } from '../../../services/api'
+
+import dateHelper from '../../../helpers/date'
 
 import './style.scss'
 
 class VideoShow extends Component {
-  state = {
-    video: {
-      name: 'A importancia do ciclismo no dia-a-dia',
-      url: 'https://content.jwplatform.com/manifests/yp34SRmf.m3u8',
-      total_views: 15,
-      created_at: '27/02/2019',
-      owner: 'Wallas Faria'
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      video: {
+        name: '',
+        url: '',
+        totalViews: '',
+        createdAt: '',
+        owner: {
+          id: null,
+          name: ''
+        }
+      }
     }
+
+    this.getVideo()
+  }
+
+  getVideo() {
+    apiVideos.getById(this.props.match.params.id)
+      .then(video => this.setState({ video }))
   }
 
   render() {
-    const { name, url, total_views, owner, created_at } = this.state.video
+    const { name, url, totalViews, owner, createdAt } = this.state.video
+
     return (
       <div className='page-video'>
         <div className="video">
@@ -33,13 +51,13 @@ class VideoShow extends Component {
               <div className='details'>
                 <small>Publicado por</small>
                 <div>
-                  <span className='owner'>{owner}</span>
-                  <em className='published-date'> em {created_at}</em>
+                  <span className='owner'>{owner.name}</span>
+                  <em className='published-date'> em {dateHelper.toLocate(createdAt)}</em>
                 </div>
               </div>
             </div>
             <div className='views'>
-              <strong>{total_views}</strong>
+              <strong>{totalViews}</strong>
               <small>views</small>
             </div>
           </div>

@@ -18,7 +18,7 @@ class ListItem extends Component {
 
     return (
       <div className='list-item'>
-        <div className='video-image'>{this.renderImage()}</div>
+        <Link to={`/video/${video.id}`} className='video-image'>{this.renderImage()}</Link>
 
         <div className='info'>
           <Link to={`/video/${video.id}`} className="title">{video.name}</Link>

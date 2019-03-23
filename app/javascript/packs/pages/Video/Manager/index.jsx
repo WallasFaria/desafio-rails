@@ -1,15 +1,38 @@
 import React, { Component } from 'react'
-import { Link } from "react-router-dom"
 
 import ToolBar from './components/ToolBar'
 import ListItem from './components/ListItem'
 import Pagination from '../../../components/Pagination'
 import Button from '../../../components/Button'
 
+import { apiVideos } from '../../../services/api'
+
 import './style.scss'
 
 class VideoManager extends Component {
+  state = {
+    videos: []
+  }
+
+  componentDidMount() {
+    this.getVideoList()
+  }
+
+  async getVideoList() {
+    apiVideos.getList().then(videos => this.setState({ videos }))
+  }
+
+  hendleEdit = video => {
+    alert('editar ' + video.name)
+  }
+
+  hendleDelete = video => {
+    alert('excluir ' + video.name)
+  }
+
   render() {
+    const videos = this.state.videos
+
     return (
       <div className='container page-my-videos'>
         <div className='top'>
@@ -24,8 +47,15 @@ class VideoManager extends Component {
         <ToolBar />
 
         <div className='video-list'>
-
+          {videos.map(video =>
+            <ListItem
+              key={video.id}
+              video={video}
+              onDelete={this.hendleDelete}
+              onEdit={this.hendleEdit} />)}
         </div>
+
+        <Pagination />
       </div>
     )
   }

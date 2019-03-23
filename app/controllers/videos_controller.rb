@@ -10,44 +10,27 @@ class VideosController < ApplicationController
     @video = Video.find(params[:id])
   end
 
-  def new
-    @video = Video.new
-  end
-
-  def edit; end
-
   def create
     @video = Video.new(video_params)
 
-    respond_to do |format|
-      if @video.save
-        format.html { redirect_to @video, notice: 'Video was successfully created.' }
-        format.json { render :show, status: :created, location: @video }
-      else
-        format.html { render :new }
-        format.json { render json: @video.errors, status: :unprocessable_entity }
-      end
+    if @video.save
+      render :show, status: :created, location: @video
+    else
+      render json: { errors: @video.errors }, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |format|
-      if @video.update(video_params)
-        format.html { redirect_to @video, notice: 'Video was successfully updated.' }
-        format.json { render :show, status: :ok, location: @video }
-      else
-        format.html { render :edit }
-        format.json { render json: @video.errors, status: :unprocessable_entity }
-      end
+    if @video.update(video_params)
+      render :show, status: :ok, location: @video
+    else
+      render json: { errors: @video.errors }, status: :unprocessable_entity
     end
   end
 
   def destroy
     @video.destroy
-    respond_to do |format|
-      format.html { redirect_to videos_url, notice: 'Video was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    head :no_content
   end
 
   private

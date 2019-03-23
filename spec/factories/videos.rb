@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :video do
-    name { Faker::Lorem.words(4) }
-    url { Faker::Internet.url('example.com', '.m3u8') }
+    name { Faker::Lorem.sentence(4) }
+    url { 'https://content.jwplatform.com/manifests/yp34SRmf.m3u8' }
     user
   end
 end

@@ -23,9 +23,9 @@ class ListItem extends Component {
         <div className='info'>
           <Link to={`/video/${video.id}`} className="title">{video.name}</Link>
           <div className="published-date">
-            Publicado em {dateHelper.toLocate(video.created_at)}
+            Publicado em {dateHelper.toLocate(video.createdAt)}
           </div>
-          <div className="views">{video.total_views} Views</div>
+          <div className="views">{video.totalViews} Views</div>
         </div>
 
         <div className="actions">

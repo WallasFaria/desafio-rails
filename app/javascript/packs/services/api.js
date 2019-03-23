@@ -1,8 +1,12 @@
 import axios from "./axiosConnect"
 
 const apiVideos = {
-  getById(id) {
-    return axios.get(`/videos/${id}`)
+  async getById(id) {
+    try {
+      return (await axios.get(`/videos/${id}`)).data
+    } catch (error) {
+      return Promise.reject(error)
+    }
   },
 
   async getList() {
@@ -14,15 +18,24 @@ const apiVideos = {
   },
 
   delete(id) {
-
+    return axios.delete(`videos/${id}`)
   },
 
-  update({nome, url}) {
-
+  async update({name, url}) {
+    const data = {name, url}
+    try {
+      return (await axios.put(`/videos/${id}`, data)).data
+    } catch (error) {
+      return Promise.reject(error)
+    }
   },
 
-  create({nome, url}) {
-
+  async create({name, url}) {
+    try {
+      return (await axios.put(`/videos/${id}`, {name, url})).data
+    } catch (error) {
+      return Promise.reject(error)
+    }
   }
 }
 

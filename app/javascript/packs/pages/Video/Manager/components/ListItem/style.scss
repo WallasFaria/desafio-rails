@@ -3,13 +3,31 @@
   padding: 10px 0;
   border-bottom: 1px solid #e2e2e2;
 
+  &:hover {
+    background-color: #f9f9f9;
+    margin-left: -10px;
+    padding-left: 10px;
+    margin-right: -10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 0px 1px var(--color-border);
+  }
+
   &:first-child {
     padding-top: 0;
+    &:hover {
+      margin-top: -10px;
+      padding-top: 10px;
+    }
   }
 
   &:last-child {
     padding-bottom: 0;
     border: none;
+    &:hover {
+      margin-bottom: -10px;
+      padding-bottom: 10px;
+    }
   }
 
   .video-image {
@@ -17,6 +35,11 @@
     height: 82px;
     margin-right: 20px;
     background-color: var(--color-gray);
+
+    &:hover {
+      color: transparent;
+      box-shadow: inset 0 0 30px rgba(0,0,0,.25);
+    }
 
     .no-image {
       text-align: center;

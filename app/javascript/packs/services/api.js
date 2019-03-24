@@ -9,8 +9,8 @@ const apiVideos = {
     }
   },
 
-  async getList({page}) {
-    const params = {page}
+  async getList({query, sort, order, page}) {
+    const params = {q: query, sort, order, page, orderBy: 'teste'}
 
     try {
       return (await axios.get('/videos', { params })).data

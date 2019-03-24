@@ -8,6 +8,10 @@ class Video < ApplicationRecord
 
   self.per_page = 10
 
+  scope :search, -> (query) {
+    where('unaccent(name) ILIKE unaccent(?)', "%#{query.gsub(' ', '%')}%") if query.present?
+  }
+
   def increment_views!
     increment! :total_views
     views.create

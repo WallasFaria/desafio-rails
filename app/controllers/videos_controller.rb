@@ -3,7 +3,10 @@ class VideosController < ApplicationController
   before_action :authenticate_user!, exception: [:show]
 
   def index
-    @videos = Video.paginate(page: params[:page])
+    @videos = current_user.videos
+      .search(params[:q])
+      .order(sort_params)
+      .paginate(page: params[:page])
   end
 
   def show
@@ -40,5 +43,13 @@ class VideosController < ApplicationController
 
     def video_params
       params.require(:video).permit(:name, :url).merge(user_id: current_user.id)
+    end
+
+    def sort_params
+      sort = Video.attribute_names.include?(params[:sort]) ?
+             params[:sort] : :created_at
+
+      order = params[:order]  == 'desc' ? :desc : :asc
+      "#{sort} #{order}"
     end
 end

@@ -9,6 +9,8 @@ import { apiVideos } from '../../../services/api'
 
 import './style.scss'
 
+var timeout = null
+
 class VideoManager extends Component {
   state = {
     videos: [],
@@ -17,6 +19,12 @@ class VideoManager extends Component {
       itemsCountPerPage: 0,
       totalItemsCount: 0,
       pageRangeDisplayed: 5
+    },
+    filters: {
+      query: '',
+      sort: 'created_at',
+      order: 'asc',
+      page: 1
     }
   }
 
@@ -24,16 +32,15 @@ class VideoManager extends Component {
     this.getVideoList()
   }
 
-  getVideoList(pageNumber = 1) {
-    const params = { page: pageNumber }
-
-    apiVideos.getList(params)
+  getVideoList = () => {
+    apiVideos.getList(this.state.filters)
       .then(({data, pagination}) =>
         this.setState({ videos: data, pagination }))
   }
 
   handlePageChange = pageNumber => {
-    this.getVideoList(pageNumber)
+    const filters = { ...this.state.filters, page: pageNumber }
+    this.setState({ filters }, this.getVideoList)
   }
 
   hendleEdit = video => {
@@ -42,6 +49,24 @@ class VideoManager extends Component {
 
   hendleDelete = video => {
     alert('excluir ' + video.name)
+  }
+
+  hendleSearch = query => {
+    clearTimeout(timeout)
+
+    timeout = setTimeout(() => {
+      const filters = { ...this.state.filters, query }
+      this.setState({ filters }, this.getVideoList)
+    }, 200);
+  }
+
+  hendleSort = sortOrder => {
+    const sort = sortOrder.split('-')[0]
+    const order = sortOrder.split('-')[1]
+
+    const filters = { ...this.state.filters, sort, order }
+
+    this.setState({ filters }, this.getVideoList)
   }
 
   render() {
@@ -58,7 +83,7 @@ class VideoManager extends Component {
             className='btn-upload' iconName='cloud-upload' />
         </div>
 
-        <ToolBar />
+        <ToolBar onSearch={this.hendleSearch} onSort={this.hendleSort} />
 
         <div className='video-list'>
           {videos.map(video =>

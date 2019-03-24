@@ -19,13 +19,18 @@ class ToolBar extends Component {
       <div className='toolbar'>
         <div className='search'>
           <i className="fa fa-search"></i>
-          <input type="search" className='form-control' placeholder='Buscar'/>
+          <input type="search" className='form-control' placeholder='Buscar'
+            onChange={e => this.props.onSearch(e.target.value)}/>
         </div>
 
         <div className='filter'>
           <div className='content-form'>
             <label htmlFor="search-order">Ordernar por:</label>
-            <select id="search-order" className='form-control'>
+            <select
+              id="search-order"
+              className='form-control'
+              onChange={e => this.props.onSort(e.target.value)}>
+
               {searchOrderOptions.map((option, i) =>
                 <option key={i} value={option.value}>{option.label}</option>)}
             </select>

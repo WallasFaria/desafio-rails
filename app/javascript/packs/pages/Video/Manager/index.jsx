@@ -77,10 +77,9 @@ class VideoManager extends Component {
         <div className='top'>
           <h1 className='title'>Meus Vídeos</h1>
 
-          <Button
-            type='action'
-            text="Publicar Vídeo"
-            className='btn-upload' iconName='cloud-upload' />
+          <Button type='action' className='btn-upload' iconName='cloud-upload'>
+            Publicar Vídeo
+          </Button>
         </div>
 
         <ToolBar onSearch={this.hendleSearch} onSort={this.hendleSort} />

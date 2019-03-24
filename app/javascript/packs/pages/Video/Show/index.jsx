@@ -65,8 +65,9 @@ class VideoShow extends Component {
           <div className='actions'>
             <LinkButton
               isLink={true} to="/my-videos" type='action'
-              text="Publique um vídeo você também"
-              className='btn-upload' iconName='cloud-upload' />
+              className='btn-upload' iconName='cloud-upload'>
+              Publique um vídeo você também
+            </LinkButton>
           </div>
         </div>
       </div>

@@ -5,8 +5,8 @@ import './style.scss'
 class ToolBar extends Component {
   state = {
     searchOrderOptions: [
-      { label: 'Mais recentes', value: 'created_at-asc' },
-      { label: 'Mais antigos', value: 'created_at-desc' },
+      { label: 'Mais recentes', value: 'created_at-desc' },
+      { label: 'Mais antigos', value: 'created_at-asc' },
       { label: 'Maior visualização', value: 'total_views-desc' },
       { label: 'Menos visualização', value: 'total_views-asc' },
     ]

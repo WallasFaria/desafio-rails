@@ -1,8 +1,6 @@
 import Axios from "axios"
-import { Redirect } from 'react-router-dom'
 
 const instance = Axios.create({
-  baseURL: 'http://localhost:3001',
   headers: {
     'Content-Type': 'application/json',
     'HTTP_X_KEY_INFLECTION': 'camel'

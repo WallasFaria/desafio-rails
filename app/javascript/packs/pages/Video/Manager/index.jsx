@@ -4,6 +4,8 @@ import Pagination from 'react-js-pagination'
 import ToolBar from './components/ToolBar'
 import ListItem from './components/ListItem'
 import Button from '../../../components/Button'
+import SidePanel from '../../../components/SidePanel'
+import FormVideo from '../components/Form'
 
 import { apiVideos } from '../../../services/api'
 
@@ -23,9 +25,10 @@ class VideoManager extends Component {
     filters: {
       query: '',
       sort: 'created_at',
-      order: 'asc',
+      order: 'desc',
       page: 1
-    }
+    },
+    showForm: false
   }
 
   componentDidMount() {
@@ -69,15 +72,32 @@ class VideoManager extends Component {
     this.setState({ filters }, this.getVideoList)
   }
 
+  renderForm = () => (
+    <SidePanel title='Novo Video'
+      visible={this.state.showForm}
+      onClose={() => this.setState({ showForm: false })}
+    >
+      <FormVideo
+        onCancel={() => this.setState({ showForm: false })}
+        onSave={this.getVideoList}
+      />
+    </SidePanel>
+  )
+
   render() {
     const videos = this.state.videos
 
     return (
       <div className='container page-my-videos'>
+        {this.renderForm()}
         <div className='top'>
           <h1 className='title'>Meus Vídeos</h1>
 
-          <Button type='action' className='btn-upload' iconName='cloud-upload'>
+          <Button
+            type='action'
+            className='btn-upload'
+            iconName='cloud-upload'
+            onClick={() => this.setState({ showForm: true })}>
             Publicar Vídeo
           </Button>
         </div>

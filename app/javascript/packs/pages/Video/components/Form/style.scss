@@ -1,0 +1,47 @@
+.form {
+  .form-control {
+    &.error {
+      border-color: #ff4040;
+      border-radius: 5px 5px 0 0;
+      border-width: 2px;
+    }
+  }
+
+  .message-error {
+    background: #ff4040;
+    display: block;
+    color: #fff;
+    padding: 2px 15px 5px;
+    border-radius: 0 0 5px 5px;
+    font-size: var(--font-small-size);
+  }
+
+  .actions {
+    margin-top: 30px;
+
+    .btn {
+      margin-right: 15px;
+    }
+  }
+
+  &.success {
+    .message {
+      padding: 20px 10px;
+      border: 1px solid #b0dae2;
+      border-radius: 5px;
+      background-color: #f7fffe;
+      font-size: var(--font-mid-size);
+      text-align: center;
+      color: var(--color-primary);
+    }
+
+    .btn-primary {
+      padding: 10px 20px;
+      font-size: 20px;
+
+      .fa {
+        margin-left: 15px;
+      }
+    }
+  }
+}

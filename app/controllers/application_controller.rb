@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  after_action :set_header
   layout :layout_by_resource
 
   protected
@@ -12,5 +13,13 @@ class ApplicationController < ActionController::Base
 
     def layout_by_resource
       devise_controller? ? "auth" : "application"
+    end
+
+    def set_header
+      response.set_header('Authenticity-Token', form_authenticity_token)
+      if current_user.present?
+        response.set_header('Current-User-Id', current_user.id)
+        response.set_header('Current-User-Name', current_user.first_name)
+      end
     end
 end

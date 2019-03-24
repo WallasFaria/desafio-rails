@@ -1,4 +1,7 @@
 import axios from "./axiosConnect"
+import middleware, { authenticityToken } from './middleware'
+
+middleware(axios)
 
 const apiVideos = {
   async getById(id) {
@@ -23,8 +26,8 @@ const apiVideos = {
     return axios.delete(`videos/${id}`)
   },
 
-  async update({name, url}) {
-    const data = {name, url}
+  async update({id, name, url}) {
+    const data = {name, url, authenticityToken}
     try {
       return (await axios.put(`/videos/${id}`, data)).data
     } catch (error) {
@@ -34,7 +37,7 @@ const apiVideos = {
 
   async create({name, url}) {
     try {
-      return (await axios.put(`/videos/${id}`, {name, url})).data
+      return (await axios.post(`/videos`, {name, url, authenticityToken})).data
     } catch (error) {
       return Promise.reject(error)
     }

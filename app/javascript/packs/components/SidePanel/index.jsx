@@ -19,7 +19,7 @@ class SidePanel extends Component {
           </header>
 
           <div className="body">
-            {children}
+            { visible && children}
           </div>
         </div>
       </Fragment>

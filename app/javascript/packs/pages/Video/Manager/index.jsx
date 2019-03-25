@@ -28,6 +28,7 @@ class VideoManager extends Component {
       order: 'desc',
       page: 1
     },
+    edit: {},
     showForm: false
   }
 
@@ -38,7 +39,7 @@ class VideoManager extends Component {
   getVideoList = () => {
     apiVideos.getList(this.state.filters)
       .then(({data, pagination}) =>
-        this.setState({ videos: data, pagination }))
+        this.setState({ videos: data, pagination, edit: {} }))
   }
 
   handlePageChange = pageNumber => {
@@ -47,7 +48,7 @@ class VideoManager extends Component {
   }
 
   hendleEdit = video => {
-    alert('editar ' + video.name)
+    this.setState({ edit: { video }, showForm: true })
   }
 
   hendleDelete = video => {
@@ -72,6 +73,10 @@ class VideoManager extends Component {
     this.setState({ filters }, this.getVideoList)
   }
 
+  hendleClickNew = () => {
+    this.setState({ showForm: true, edit: {} })
+  }
+
   renderForm = () => (
     <SidePanel title='Novo Video'
       visible={this.state.showForm}
@@ -80,6 +85,7 @@ class VideoManager extends Component {
       <FormVideo
         onCancel={() => this.setState({ showForm: false })}
         onSave={this.getVideoList}
+        {...this.state.edit}
       />
     </SidePanel>
   )
@@ -97,7 +103,7 @@ class VideoManager extends Component {
             type='action'
             className='btn-upload'
             iconName='cloud-upload'
-            onClick={() => this.setState({ showForm: true })}>
+            onClick={this.hendleClickNew}>
             Publicar Vídeo
           </Button>
         </div>

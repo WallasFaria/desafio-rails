@@ -41,6 +41,10 @@ const apiVideos = {
     } catch (error) {
       return Promise.reject(error)
     }
+  },
+
+  addView(videoId) {
+    return axios.post(`/videos/${videoId}/views`, {authenticityToken})
   }
 }
 

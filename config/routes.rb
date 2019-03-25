@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   resources :home, only: [:index]
 
-  resources :videos, only: [:index, :show, :create, :update, :destroy], defaults: { format: :json }
+  resources :videos, only: %i(index show create update destroy), defaults: { format: :json } do
+    resources :views, only: [:create]
+  end
 
   root to: "home#index"
 

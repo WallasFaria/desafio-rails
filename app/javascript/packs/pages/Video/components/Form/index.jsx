@@ -78,13 +78,14 @@ class Form extends Component {
           O vídeo "{video.name}" foi salvo com sucesso!
         </div>
         <div className="actions">
-          <Button
-            type='primary'
-            iconName='arrow-right'
-            to={`/video/${video.id}`}
-            isLink={true}>
-            Ver Vídeo
-          </Button>
+          {this.props.showPrimaryAction &&
+            <Button
+              type='primary'
+              iconName='arrow-right'
+              to={`/video/${video.id}`}
+              isLink={true}>
+              Ver Vídeo
+            </Button>}
           <Button type='light' onClick={this.props.onCancel}>Fechar</Button>
         </div>
       </div>
@@ -132,7 +133,12 @@ class Form extends Component {
 Form.propTypes = {
   video: PropTypes.object,
   onSave: PropTypes.func.isRequired,
-  onCancel: PropTypes.func.isRequired
+  onCancel: PropTypes.func.isRequired,
+  showPrimaryActionOnSeccess: PropTypes.bool
+}
+
+Form.defaultPropTypes = {
+  showPrimaryActionOnSeccess: true
 }
 
 export default Form

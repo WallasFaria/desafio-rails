@@ -1,8 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 import VideoPlayer from '../../../components/VideoPlayer'
-import LinkButton from '../../../components/Button'
+import Button from '../../../components/Button'
+import SidePanel from '../../../components/SidePanel'
+import FormVideo from '../components/Form'
 import { apiVideos } from '../../../services/api'
+import { currentUser } from '../../../services/middleware'
 
 import dateHelper from '../../../helpers/date'
 
@@ -22,7 +25,9 @@ class VideoShow extends Component {
           id: null,
           name: ''
         }
-      }
+      },
+      showForm: false,
+      startedVideo: false
     }
 
     this.getVideo()
@@ -33,14 +38,56 @@ class VideoShow extends Component {
       .then(video => this.setState({ video }))
   }
 
+  renderForm = () => {
+    if (!currentUser.isLoggedIn()) return false
+    return (
+      <SidePanel title='Editar'
+        visible={this.state.showForm}
+        onClose={() => this.setState({ showForm: false })}
+      >
+        <FormVideo
+          onCancel={() => this.setState({ showForm: false })}
+          onSave={() => this.getVideo()}
+          showPrimaryAction={false}
+          video={this.state.video}
+        />
+      </SidePanel>
+    )
+  }
+
+  renderLoggedActions = () => (
+    <Fragment>
+      <Button type='light' iconName='edit'
+        onClick={() => this.setState({ showForm: true })}>
+        Editar
+      </Button>
+    </Fragment>
+  )
+
+  renderNotLoggedActions = () => (
+    <Button
+      isLink={true} to="/my-videos" type='action'
+      className='btn-upload' iconName='cloud-upload'>
+      Publique um vídeo você também
+    </Button>
+  )
+
+  hendlePlay = () => {
+    if (!this.state.startedVideo) {
+      this.setState({ startedVideo: true })
+      apiVideos.addView(this.state.video.id)
+    }
+  }
+
   render() {
     const { name, url, totalViews, owner, createdAt } = this.state.video
 
     return (
       <div className='page-video'>
+        { this.renderForm() }
         <div className="video">
           <div className="container">
-            <VideoPlayer source={url} width="930" />
+            <VideoPlayer onPlay={this.hendlePlay} source={url} width="930" />
           </div>
         </div>
 
@@ -63,11 +110,9 @@ class VideoShow extends Component {
           </div>
 
           <div className='actions'>
-            <LinkButton
-              isLink={true} to="/my-videos" type='action'
-              className='btn-upload' iconName='cloud-upload'>
-              Publique um vídeo você também
-            </LinkButton>
+            {currentUser.isLoggedIn()
+              ? this.renderLoggedActions()
+              : this.renderNotLoggedActions()}
           </div>
         </div>
       </div>

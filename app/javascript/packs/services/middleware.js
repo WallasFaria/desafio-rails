@@ -5,7 +5,8 @@ export default instance => {
 
 const currentUser = {
   id: null,
-  name: null
+  name: null,
+  isLoggedIn: function() { return !!this.id }
 }
 
 var authenticityToken = ''

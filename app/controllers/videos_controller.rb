@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
   before_action :set_video, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, exception: [:show]
+  before_action :authenticate_user!, except: [:show]
 
   def index
     @videos = current_user.videos

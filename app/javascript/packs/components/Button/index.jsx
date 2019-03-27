@@ -1,20 +1,54 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-const Button = (props) => {
-  const {children, type, iconName, leftIcon, className, isLink, ...rest} = props
+import './style.scss'
 
-  rest.className = `btn btn-${type} ${className}`
-  const icon = iconName ? <i className={`fa fa-${iconName}`}></i> : null
-  const left = leftIcon && icon
-  const right = !leftIcon && icon
+class Button extends Component {
+  state = {
+    showConfirm: false
+  }
 
-  const Button = isLink
-    ? <Link {...rest}>{left} {children} {right}</Link>
-    : <button {...rest}>{left} {children} {right}</button>
+  renderConfirm = () => (
+    <div className={`confirm popover fade bs-popover-left ${this.state.showConfirm ? 'show' : ''}`}>
+      <div className="arrow"></div>
+      <h3 className="popover-header">{this.props.confirm}</h3>
+      <div className="popover-body">
+        <a onClick={this.hendleAction} className='btn btn-danger'>Excluir</a>
+        <a onClick={this.hendleCancel} className='btn btn-light'>Cancelar</a>
+      </div>
+    </div>
+  )
 
-  return Button
+  hendleCancel = () => {
+    this.setState({ showConfirm: false })
+  }
+
+  hendleAction = () => {
+    this.setState({ showConfirm: false })
+    this.props.onClick()
+  }
+
+  render() {
+    const {children, type, iconName, leftIcon, className, isLink, ...rest} = { ...this.props }
+
+    if (this.props.confirm) {
+      rest.onClick = () => this.setState({ showConfirm: true })
+    }
+
+    rest.className = `btn btn-${type} ${className}`
+
+    const icon = iconName ? <i className={`fa fa-${iconName}`}></i> : null
+    const left = leftIcon && icon
+    const right = !leftIcon && icon
+
+    let Button = isLink
+      ? <Link {...rest}>{left} {children} {right}</Link>
+      : <button {...rest}>{left} {children} {right}</button>
+
+    if (!this.props.confirm) return Button
+    return <span className='btn-component'>{Button}{this.renderConfirm()}</span>
+  }
 }
 
 Button.propTypes = {

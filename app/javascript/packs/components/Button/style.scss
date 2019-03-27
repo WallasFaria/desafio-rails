@@ -1,0 +1,36 @@
+.btn-component {
+  position: relative;
+  display: inline;
+}
+
+.confirm.popover.fade.bs-popover-left {
+  display: none;
+
+  &.show {
+    width: 230px;
+    left: -233px;
+    top: -28px;
+    display: block;
+
+    .arrow {
+      top: 32px;
+    }
+  }
+
+  .btn {
+    margin: 0 10px 0 0 !important;
+
+    &.btn-danger {
+      color: #fff;
+      background-color: #dc3545;
+      border-color: #dc3545;
+
+      &:hover {
+        color: #fff;
+        background-color: #c82333;
+        border-color: #bd2130;
+      }
+    }
+  }
+
+}

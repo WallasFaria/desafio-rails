@@ -105,6 +105,17 @@ class VideoShow extends Component {
     }
   }
 
+  userOwnsTheVideo = () => {
+    return currentUser.isLoggedIn() && this.state.video.owner.id == currentUser.id
+  }
+
+  renderActions = () => {
+    if (!this.state.video.url) return null
+    return this.userOwnsTheVideo()
+      ? this.renderLoggedActions()
+      : this.renderNotLoggedActions()
+  }
+
   render() {
     const { name, url, totalViews, owner, createdAt } = this.state.video
 
@@ -135,10 +146,8 @@ class VideoShow extends Component {
             </div>
           </div>
 
-          <div className={`actions row ${currentUser.isLoggedIn() ? 'is-logged-in' : ''}`}>
-            {this.state.video.url != '' && currentUser.isLoggedIn()
-              ? this.renderLoggedActions()
-              : this.renderNotLoggedActions()}
+          <div className={`actions row ${this.userOwnsTheVideo() ? 'is-logged-in' : ''}`}>
+            { this.renderActions()}
           </div>
         </div>
       </div>

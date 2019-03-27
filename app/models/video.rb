@@ -4,7 +4,8 @@ class Video < ApplicationRecord
 
   validates :name, presence: true
   validates :url, presence: true, url: { allow_blank: true },
-                  format: { with: /\.m3u8$/i, multiline: true }
+                  format: { with: /\.m3u8$/i, multiline: true,
+                            message: :invalid_extension }
 
   self.per_page = 10
 

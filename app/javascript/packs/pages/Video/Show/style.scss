@@ -79,11 +79,14 @@
     }
 
     &.is-logged-in {
-      align-items: end;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: initial;
+      margin-bottom: auto;
 
       & > div {
-        flex: 1 1;
         display: flex;
+        align-items: center;
         border: 1px solid #dadada;
         background: #fbfbfb;
         padding: 5px 0;
@@ -107,6 +110,36 @@
 
         .btn {
           margin: 0 15px;
+        }
+
+        &.share-link {
+          background-color: transparent;
+          flex-direction: column;
+          padding: 5px 30px 7px;
+          border: 1px dotted #aaa;
+          border-style: dashed;
+          box-shadow: none;
+          border-radius: 10px;
+          margin-top: 20px;
+
+          span {
+            font-size: var(--font-small-size);
+            font-family: 'Segoe UI Semibold';
+            color: var(--color-default);
+          }
+
+          input {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            text-align: center;
+            color: #777;
+
+            &:focus {
+              border: none;
+              outline: none;
+            }
+          }
         }
       }
     }

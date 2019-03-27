@@ -27,7 +27,8 @@ class VideoShow extends Component {
         }
       },
       showForm: false,
-      startedVideo: false
+      startedVideo: false,
+      txtTooltipCopy: 'Copiar Link do vídeo'
     }
 
     this.getVideo()
@@ -47,6 +48,10 @@ class VideoShow extends Component {
   }
 
   hendleClickCopy = () => {
+    const copyText = window.document.querySelector('.share-link input')
+    copyText.select()
+    window.document.execCommand("copy")
+    this.setState({ txtTooltipCopy: 'Link Copiado' });
   }
 
   renderForm = () => {
@@ -80,7 +85,8 @@ class VideoShow extends Component {
         </Button>
       </div>
       <div className='col-sm-6'>
-        <Button type='light' iconName='copy' onClick={this.hendleClickCopy}>
+        <Button type='light' iconName='copy' onClick={this.hendleClickCopy}
+          data-toggle="tooltip" data-placement="top" title={this.state.txtTooltipCopy}>
           Copiar Link
         </Button>
         <Button isLink={true} to='/my-videos' type='light' iconName='arrow-left' onClick={this.hendleClickGoBack}>
@@ -147,7 +153,16 @@ class VideoShow extends Component {
           </div>
 
           <div className={`actions row ${this.userOwnsTheVideo() ? 'is-logged-in' : ''}`}>
-            { this.renderActions()}
+            {this.renderActions()}
+
+            {this.userOwnsTheVideo() && (
+              <div className="share-link">
+                <span>Link do vídeo</span>
+                <input readOnly
+                  value={`${window.location.origin}/video/${this.state.video.id}`}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>

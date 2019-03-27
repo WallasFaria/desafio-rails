@@ -67,6 +67,10 @@ class VideoManager extends Component {
       })
   }
 
+  hendleCopy = () => {
+    this.setState({ flashMessages: [...this.state.flashMessages, 'Link copiado'] })
+  }
+
   hendleSearch = query => {
     clearTimeout(timeout)
 
@@ -90,7 +94,7 @@ class VideoManager extends Component {
   }
 
   renderForm = () => (
-    <SidePanel title='Novo Video'
+    <SidePanel title={this.state.edit.video ? 'Editar' : 'Cadastrar Novo'}
       visible={this.state.showForm}
       onClose={() => this.setState({ showForm: false })}
     >
@@ -137,6 +141,7 @@ class VideoManager extends Component {
             <ListItem
               key={video.id}
               video={video}
+              onCopy={this.hendleCopy}
               onDelete={this.hendleDelete}
               onEdit={this.hendleEdit} />)}
         </div>

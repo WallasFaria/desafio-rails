@@ -74,17 +74,22 @@
       line-height: 20px;
     }
 
-    .published-date, .views {
+    .published-date, .views, .share-link {
       color: var(--color-gray);
       font-size: var(--font-small-size);
+      line-height: 14px;
     }
 
-    .published-date {
-      margin-top: 5px;
-    }
+    .share-link input {
+      border: none;
+      width: 75%;
+      color: var(--color-default);
+      background-color: transparent;
 
-    .views {
-      margin-bottom: 5px;
+      &:focus {
+        border: none;
+        outline: none;
+      }
     }
   }
 

@@ -62,7 +62,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 15px;
     min-height: 200px;
 
     .btn-upload {
@@ -75,6 +75,39 @@
         font-size: 40px;
         margin-left: 15px;
         color: rgba(255,255,255,.6);
+      }
+    }
+
+    &.is-logged-in {
+      align-items: end;
+
+      & > div {
+        flex: 1 1;
+        display: flex;
+        border: 1px solid #dadada;
+        background: #fbfbfb;
+        padding: 5px 0;
+        color: var(--color-gray);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+        & > div {
+          display: flex;
+          justify-content: space-evenly;
+
+          &:first-child::after {
+            content: '';
+            position: absolute;
+            width: 1px;
+            background-color: var(--color-border);
+            right: 0;
+            top: 5px;
+            bottom: 5px;
+          }
+        }
+
+        .btn {
+          margin: 0 15px;
+        }
       }
     }
   }

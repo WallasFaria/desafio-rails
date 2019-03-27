@@ -38,6 +38,12 @@ class VideoShow extends Component {
       .then(video => this.setState({ video }))
   }
 
+  hendleClickRemove = () => {
+  }
+
+  hendleClickCopy = () => {
+  }
+
   renderForm = () => {
     if (!currentUser.isLoggedIn()) return false
     return (
@@ -56,12 +62,27 @@ class VideoShow extends Component {
   }
 
   renderLoggedActions = () => (
-    <Fragment>
-      <Button type='light' iconName='edit'
-        onClick={() => this.setState({ showForm: true })}>
-        Editar
-      </Button>
-    </Fragment>
+    <div>
+      <div className='col-sm-6'>
+        <Button type='light' iconName='edit'
+          onClick={() => this.setState({ showForm: true })}>
+          Editar
+        </Button>
+        <Button type='light' iconName='trash'
+          onClick={this.hendleClickRemove}
+          confirm='Certeza que deseja excluir?'>
+          Excluir
+        </Button>
+      </div>
+      <div className='col-sm-6'>
+        <Button type='light' iconName='copy' onClick={this.hendleClickCopy}>
+          Copiar Link
+        </Button>
+        <Button isLink={true} to='/my-videos' type='light' iconName='arrow-left' onClick={this.hendleClickGoBack}>
+          Voltar para meus vídeos
+        </Button>
+      </div>
+    </div>
   )
 
   renderNotLoggedActions = () => (
@@ -109,8 +130,8 @@ class VideoShow extends Component {
             </div>
           </div>
 
-          <div className='actions'>
-            {currentUser.isLoggedIn()
+          <div className={`actions row ${currentUser.isLoggedIn() ? 'is-logged-in' : ''}`}>
+            {this.state.video.url != '' && currentUser.isLoggedIn()
               ? this.renderLoggedActions()
               : this.renderNotLoggedActions()}
           </div>

@@ -1,0 +1,12 @@
+.alert {
+  position: fixed;
+  top: 65px;
+  right: 10px;
+  box-shadow: 0px 4px 7px rgba(26, 26, 26, 0.15);
+  z-index: 1000;
+
+  &.alert-success {
+    border-color: #adccb4;
+    background-color: #e6f5e9;
+  }
+}

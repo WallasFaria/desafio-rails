@@ -9,6 +9,22 @@ class Button extends Component {
     showConfirm: false
   }
 
+  setTooltip = element => {
+    this.element = element
+    if (this.props['data-toggle'] == 'tooltip') {
+      window.$(element).tooltip()
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props['data-toggle'] == 'tooltip') {
+      window.$(this.element)
+        .tooltip('hide')
+        .attr('data-original-title', this.props.title)
+        .tooltip('show')
+    }
+  }
+
   renderConfirm = () => (
     <div className={`confirm popover fade bs-popover-left ${this.state.showConfirm ? 'show' : ''}`}>
       <div className="arrow"></div>
@@ -43,8 +59,8 @@ class Button extends Component {
     const right = !leftIcon && icon
 
     let Button = isLink
-      ? <Link {...rest}>{left} {children} {right}</Link>
-      : <button {...rest}>{left} {children} {right}</button>
+      ? <Link ref={this.setTooltip} {...rest}>{left} {children} {right}</Link>
+      : <button ref={this.setTooltip} {...rest}>{left} {children} {right}</button>
 
     if (!this.props.confirm) return Button
     return <span className='btn-component'>{Button}{this.renderConfirm()}</span>

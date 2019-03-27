@@ -39,6 +39,11 @@ class VideoShow extends Component {
   }
 
   hendleClickRemove = () => {
+    apiVideos.delete(this.state.video.id)
+    .then(() => {
+      const flashMessage = `Vídeo "${this.state.video.name}" foi excluído!`
+      this.props.history.push('/my-videos', { flashMessage })
+    })
   }
 
   hendleClickCopy = () => {

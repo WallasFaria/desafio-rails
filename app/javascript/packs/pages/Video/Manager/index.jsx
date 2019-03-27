@@ -5,6 +5,7 @@ import ToolBar from './components/ToolBar'
 import ListItem from './components/ListItem'
 import Button from '../../../components/Button'
 import SidePanel from '../../../components/SidePanel'
+import Alert from '../../../components/Alert'
 import FormVideo from '../components/Form'
 
 import { apiVideos } from '../../../services/api'
@@ -29,11 +30,17 @@ class VideoManager extends Component {
       page: 1
     },
     edit: {},
-    showForm: false
+    showForm: false,
+    flashMessages: [],
   }
 
   componentDidMount() {
     this.getVideoList()
+    if (this.props.location.state && this.props.location.state.flashMessage) {
+      let flashMessages = this.state.flashMessages
+      flashMessages.push(this.props.location.state.flashMessage)
+      this.setState({ flashMessages })
+    }
   }
 
   getVideoList = () => {
@@ -52,7 +59,12 @@ class VideoManager extends Component {
   }
 
   hendleDelete = video => {
-    alert('excluir ' + video.name)
+    apiVideos.delete(video.id)
+      .then(() => {
+        const message = `Video "${video.name}" foi excluido!`
+        this.setState({ flashMessages: [...this.state.flashMessages, message] })
+        this.getVideoList()
+      })
   }
 
   hendleSearch = query => {
@@ -90,12 +102,22 @@ class VideoManager extends Component {
     </SidePanel>
   )
 
+  removeFlashMessage = msg => {
+    const flashMessages = this.state.flashMessages.filter(m => m != msg)
+    this.setState({ flashMessages })
+  }
+
   render() {
     const videos = this.state.videos
 
     return (
       <div className='container page-my-videos'>
         {this.renderForm()}
+
+        {this.state.flashMessages.map((msg, i) =>
+          <Alert key={i} text={msg} onDismiss={() => this.removeFlashMessage(msg)}/>
+        )}
+
         <div className='top'>
           <h1 className='title'>Meus Vídeos</h1>
 

@@ -1,6 +1,6 @@
 class Video < ApplicationRecord
   belongs_to :user
-  has_many :views
+  has_many :views, dependent: :destroy
 
   validates :name, presence: true
   validates :url, presence: true, url: { allow_blank: true },

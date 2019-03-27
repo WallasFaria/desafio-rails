@@ -23,7 +23,7 @@ const apiVideos = {
   },
 
   delete(id) {
-    return axios.delete(`videos/${id}`)
+    return axios.delete(`/videos/${id}`, {data: {authenticityToken}})
   },
 
   async update({id, name, url}) {

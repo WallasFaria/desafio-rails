@@ -30,7 +30,11 @@ class ListItem extends Component {
 
         <div className="actions">
           <Button iconName='edit' type='light' title='Editar' onClick={() => onEdit(video)}/>
-          <Button iconName='trash' type='light' title='Excluir' onClick={() => onDelete(video)}/>
+          <Button
+            iconName='trash'
+            type='light'
+            confirm='Certeza que deseja excluir?'
+            onClick={() => onDelete(video)}/>
         </div>
       </div>
     )

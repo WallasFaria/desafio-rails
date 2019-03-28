@@ -1,4 +1,4 @@
-h2 Forgot your password?
+h2 Esqueceu sua senha?
 
 = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
   = render "devise/shared/error_messages", resource: resource
@@ -8,6 +8,6 @@ h2 Forgot your password?
     = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
 
   .form-group.actions
-    = f.submit "Send me reset password instructions", class: 'btn btn-primary'
+    = f.submit "Envie-me as instruções de senha redefinidas", class: 'btn btn-primary'
 
 = render "devise/shared/links"

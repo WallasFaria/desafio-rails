@@ -1,4 +1,4 @@
-h2 Sign up
+h2 Cadastrar
 
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = render "devise/shared/error_messages", resource: resource
@@ -19,13 +19,13 @@ h2 Sign up
     = f.label :password
     = f.password_field :password, autocomplete: "new-password", class: 'form-control'
     - if @minimum_password_length
-      small.form-text.text-muted #{@minimum_password_length} characters minimum
+      small.form-text.text-muted #{@minimum_password_length} mínimo de caracteres
 
   .form-group
     = f.label :password_confirmation
     = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control'
 
   .actions
-    = f.submit "Sign up", class: 'btn btn-primary'
+    = f.submit "Cadastrar", class: 'btn btn-primary'
 
 = render "devise/shared/links"

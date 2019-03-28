@@ -10,6 +10,8 @@ pt-BR:
         current_sign_in_at: Atualmente logado em
         current_sign_in_ip: IP do acesso atual
         email: Email
+        first_name: Nome
+        last_name: Sobrenome
         encrypted_password: Senha criptografada
         failed_attempts: Tentativas sem sucesso
         last_sign_in_at: Último acesso em
@@ -107,7 +109,7 @@ pt-BR:
       signed_up_but_unconfirmed: Uma mensagem com um link de confirmação foi enviada para o seu e-mail. Por favor, acesse o link para ativar sua conta.
       update_needs_confirmation: Sua conta foi atualizada com sucesso, mas nós precisamos verificar o novo endereço de email. Por favor, verifique seu email e clique no link de confirmação para finalizar confirmando o seu novo email.
       updated: A sua conta foi atualizada com sucesso.
-      updated_but_not_signed_in: 
+      updated_but_not_signed_in:
     sessions:
       already_signed_out: Logout efetuado com sucesso.
       new:

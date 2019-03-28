@@ -1,0 +1,42 @@
+.home-page {
+  .slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    font-size: var(--font-super-title-size);
+    text-align: center;
+
+    .fa {
+      font-size: 160px;
+      padding: 30px;
+    }
+
+    h1 {
+      color: var(--color-mid-gray);
+    }
+  }
+
+  .content {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: 200px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    .btn-upload {
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      font-size: 22px;
+
+      .fa {
+        font-size: 40px;
+        margin-left: 15px;
+        color: rgba(255,255,255,.6);
+      }
+    }
+  }
+}
+

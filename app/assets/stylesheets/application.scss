@@ -25,6 +25,21 @@ body {
 
 header {
   background-color: var(--color-white);
+
+  #dropdownMenuButton {
+    padding: 0;
+  }
+
+  .dropdown-menu {
+    left: auto;
+    right: 0;
+  }
+
+  .container {
+    @media (max-width: 500px) {
+      padding: 0;
+    }
+  }
 }
 
 .logo {
@@ -40,9 +55,13 @@ header {
   font-family: 'Segoe UI Semibold'
 }
 
-@media (min-width: 1200px) {
-  .container {
+.container {
+  @media (min-width: 1200px) {
     max-width: 960px;
+  }
+  @media (max-width: 767px) {
+    padding-right: 10px;
+    padding-left: 10px;
   }
 }
 

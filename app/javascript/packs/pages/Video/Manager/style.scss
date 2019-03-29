@@ -16,6 +16,33 @@
     .btn-upload {
       position: absolute;
       right: 0;
+
+      @media (max-width: 767px) {
+        width: 55px;
+        height: 55px;
+        border-radius: 33px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        bottom: 22px;
+        position: fixed;
+        right: 22px;
+        z-index: 1000;
+        box-shadow: 1px 2px 6px rgba(0,0,0,.3);
+
+        span {
+          display: none;
+        }
+
+        .fa {
+          margin: 0;
+          color: #fff;
+          &::before {
+            content: "\f067";
+          }
+        }
+      }
     }
   }
 

@@ -42,7 +42,7 @@ class VideoPlayer extends Component {
     if (!source) return null
 
     return (
-      <video ref={this.settingVideo} id='main-player' className="video-js vjs-default-skin" {...dimentions} controls>
+      <video ref={this.settingVideo} id='main-player' data-setup='{"fluid": true}' className="video-js vjs-default-skin" {...dimentions} controls>
         <source src={source} type={type || 'application/x-mpegURL'} />
       </video>
     )

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Button from '../../../../../components/Button'
 
 import './style.scss'
 
@@ -9,7 +10,13 @@ class ToolBar extends Component {
       { label: 'Mais antigos', value: 'created_at-asc' },
       { label: 'Maior visualização', value: 'total_views-desc' },
       { label: 'Menos visualização', value: 'total_views-asc' },
-    ]
+    ],
+    showFilter: false
+  }
+
+  hendleClickBtnFilter = () => {
+    const showFilter = !this.state.showFilter
+    this.setState({ showFilter })
   }
 
   render() {
@@ -24,7 +31,8 @@ class ToolBar extends Component {
         </div>
 
         <div className='filter'>
-          <div className='content-form'>
+          <Button iconName='bars' type='light' className='btn-filter' onClick={this.hendleClickBtnFilter} />
+          <div className={`content-form ${this.state.showFilter ? 'visible' : ''}`}>
             <label htmlFor="search-order">Ordernar por:</label>
             <select
               id="search-order"

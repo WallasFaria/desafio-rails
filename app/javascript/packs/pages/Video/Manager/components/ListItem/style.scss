@@ -2,6 +2,19 @@
   display: flex;
   padding: 10px 0;
   border-bottom: 1px solid #e2e2e2;
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+
+  @media (min-width: 769px) and (max-width: 992px) {
+  }
+
+  @media (max-width: 768px) {
+  }
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
 
   &:hover {
     background-color: #f9f9f9;
@@ -35,6 +48,10 @@
     height: 82px;
     margin-right: 20px;
     background-color: var(--color-gray);
+
+    @media (max-width: 500px) {
+      display: none;
+    }
 
     &:hover {
       color: transparent;
@@ -93,14 +110,59 @@
     }
   }
 
+  .btn-actions {
+    position: absolute;
+    right: 0;
+    color: var(--gray);
+  }
+
   .actions {
     display: flex;
     align-items: center;
+
+    @media (max-width: 500px) {
+      // margin-top: 7px;
+      // justify-content: space-between;
+      // background: #f8f8f8;
+      // padding: 3px;
+      // border: 1px solid #eee;
+      // border-radius: 4px
+
+      justify-content: space-between;
+      border-radius: 0 5px 5px 0;
+      position: absolute;
+      right: -1px;
+      padding: 10px 50px 10px 10px;
+      background: #fff;
+      height: calc(100%);
+      top: 0px;
+      box-shadow: 0 0 14px rgba(0,0,0,.2);
+      visibility: hidden;
+      transition: width 1s;
+      width: 0;
+
+      &.visible {
+        width: 200px;
+        visibility: visible;
+        transition: width .3s ease;
+      }
+    }
 
     .btn {
       background: #f5f5f6;
       border: 1px solid #ddd;
       margin-left: 5px;
+
+      &.btn-actions {
+        height: 100%;
+        border-radius: 0;
+        border-width: 0 0 0 1px;
+      }
+
+      // @media (max-width: 500px) {
+      //   margin-left: 0;
+      //   background: #fff;
+      // }
 
       &:hover {
         border-color: var(--color-primary)

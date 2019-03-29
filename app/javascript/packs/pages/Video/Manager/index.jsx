@@ -130,7 +130,7 @@ class VideoManager extends Component {
             className='btn-upload'
             iconName='cloud-upload'
             onClick={this.hendleClickNew}>
-            Publicar Vídeo
+            <span>Publicar Vídeo</span>
           </Button>
         </div>
 

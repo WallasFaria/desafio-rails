@@ -38,6 +38,19 @@
     -webkit-transition: width 0.5s;
 
     width: 40%;
+
+    @media (min-width: 769px) and (max-width: 992px) {
+      width: 50%;
+    }
+
+    @media (max-width: 768px) {
+      width: 70%;
+      padding: 5%;
+    }
+
+    @media (max-width: 500px) {
+      width: 90%;
+    }
   }
 
   header {
@@ -52,6 +65,10 @@
 
     .btn {
       font-size: var(--font-small-size);
+
+      @media (max-width: 500px) {
+        padding: 3px;
+      }
 
       .fa-close {
         background-color: #f2f2f2;

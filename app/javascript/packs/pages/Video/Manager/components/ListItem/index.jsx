@@ -7,11 +7,19 @@ import dateHelper from '../../../../../helpers/date'
 import './style.scss'
 
 class ListItem extends Component {
+  state = {
+    showActions: false
+  }
+
   hendleClickCopy = () => {
     const copyText = window.document.querySelector(`.item-${this.props.video.id} .share-link input`)
     copyText.select()
     window.document.execCommand("copy")
     this.props.onCopy()
+  }
+
+  hendleClickActions = () => {
+    this.setState({ showActions: !this.state.showActions })
   }
 
   renderImage() {
@@ -39,7 +47,8 @@ class ListItem extends Component {
           </div>
         </div>
 
-        <div className="actions">
+        <Button  iconName='cog' type='actions' onClick={this.hendleClickActions} />
+        <div className={`actions ${this.state.showActions ? 'visible' : ''}`}>
           <Button type='light' iconName='copy' onClick={this.hendleClickCopy} />
           <Button iconName='edit' type='light' title='Editar' onClick={() => onEdit(video)}/>
           <Button
@@ -47,6 +56,7 @@ class ListItem extends Component {
             type='light'
             confirm='Certeza que deseja excluir?'
             onClick={() => onDelete(video)}/>
+          <Button  iconName='times' type='actions'  onClick={this.hendleClickActions} />
         </div>
       </div>
     )

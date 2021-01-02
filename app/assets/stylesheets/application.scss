@@ -1,3 +1,5 @@
+//= "fontface/style";
+
 @import "variables";
 
 @import "bootstrap";
@@ -9,8 +11,17 @@
 @import "font-awesome";
 
 @import "auth";
-
-@import "fontface/style";
+@import "video.js/dist/video-js";
+@import "pages/Home";
+@import "pages/Video/components/Form";
+@import "pages/Video/Manager/ToolBar";
+@import "pages/Video/Manager/ListItem";
+@import "pages/Video/Manager";
+@import "pages/Video/Show";
+@import "components/Alert";
+@import "components/Button";
+@import "components/SidePanel";
+@import "components/VideoPlayer";
 
 body {
   display: flex;

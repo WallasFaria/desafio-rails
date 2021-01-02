@@ -1,15 +1,13 @@
 import React, { Component, Fragment } from 'react'
 
-import VideoPlayer from '../../../components/VideoPlayer'
-import Button from '../../../components/Button'
-import SidePanel from '../../../components/SidePanel'
-import FormVideo from '../components/Form'
-import { apiVideos } from '../../../services/api'
-import { currentUser } from '../../../services/middleware'
+import VideoPlayer from '../../components/VideoPlayer'
+import Button from '../../components/Button'
+import SidePanel from '../../components/SidePanel'
+import FormVideo from './components/Form'
+import { apiVideos } from '../../services/api'
+import { currentUser } from '../../services/middleware'
 
-import dateHelper from '../../../helpers/date'
-
-import './style.scss'
+import dateHelper from '../../helpers/date'
 
 class VideoShow extends Component {
   constructor(props) {

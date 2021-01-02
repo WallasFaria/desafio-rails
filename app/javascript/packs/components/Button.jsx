@@ -2,8 +2,6 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-import './style.scss'
-
 class Button extends Component {
   state = {
     showConfirm: false

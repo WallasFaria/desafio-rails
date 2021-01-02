@@ -10,8 +10,6 @@ import FormVideo from '../components/Form'
 
 import { apiVideos } from '../../../services/api'
 
-import './style.scss'
-
 var timeout = null
 
 class VideoManager extends Component {

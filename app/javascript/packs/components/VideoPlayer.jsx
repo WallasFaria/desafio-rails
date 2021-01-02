@@ -3,19 +3,18 @@ import PropTypes from 'prop-types'
 
 import videojs from 'video.js'
 
-require('video.js/dist/video-js.css')
 window.videojs = videojs
 
 require('videojs-contrib-hls/dist/videojs-contrib-hls')
 require('videojs-contrib-quality-levels/dist/videojs-contrib-quality-levels.js')
-require('videojs-hls-quality-selector/dist/videojs-hls-quality-selector.js')
-require('./style.css')
+import videojsqualityselector from 'videojs-hls-quality-selector' 
 
 class VideoPlayer extends Component {
 
   settingVideo = (video) => {
     if (video) {
       const player = videojs(video)
+      player.hlsQualitySelector = videojsqualityselector;
       player.hlsQualitySelector()
 
       if (typeof this.props.onPlay === 'function') {

@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import Button from '../../../../../components/Button'
-
-import './style.scss'
+import Button from '../../../../components/Button'
 
 class ToolBar extends Component {
   state = {

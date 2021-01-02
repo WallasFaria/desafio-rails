@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import Button from '../Button'
-
-require('./style.scss')
+import Button from './Button'
 
 class SidePanel extends Component {
   render() {

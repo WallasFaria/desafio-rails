@@ -1,10 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import { apiVideos } from '../../../../services/api'
-import Button from '../../../../components/Button'
-
-import './style.scss'
+import { apiVideos } from '../../../services/api'
+import Button from '../../../components/Button'
 
 const initialState = {
   video: {

@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from "react-router-dom"
-import Button from '../../components/Button'
-
-import './style.scss'
+import Button from '../components/Button'
 
 class Home extends Component {
   render() {

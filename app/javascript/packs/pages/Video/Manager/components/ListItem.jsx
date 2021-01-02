@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import Button from '../../../../../components/Button'
-import dateHelper from '../../../../../helpers/date'
-
-import './style.scss'
+import Button from '../../../../components/Button'
+import dateHelper from '../../../../helpers/date'
 
 class ListItem extends Component {
   state = {

@@ -114,8 +114,12 @@
     position: absolute;
     right: 0;
     color: var(--gray);
+    display: none;
+    @media (max-width: 500px) {
+      display: block;
+    }
   }
-
+  
   .actions {
     display: flex;
     align-items: center;
@@ -154,15 +158,15 @@
       margin-left: 5px;
 
       &.btn-actions {
+        display: none;
         height: 100%;
         border-radius: 0;
         border-width: 0 0 0 1px;
+        @media (max-width: 500px) {
+          display: block;
+        }
       }
 
-      // @media (max-width: 500px) {
-      //   margin-left: 0;
-      //   background: #fff;
-      // }
 
       &:hover {
         border-color: var(--color-primary)
